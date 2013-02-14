@@ -178,12 +178,12 @@ class Browser
   def id
     case
     when chrome?      then :chrome
-    when iphone?      then :iphone
-    when ipad?        then :ipad
-    when ipod?        then :ipod
     when ie?          then :ie
     when opera?       then :opera
     when firefox?     then :firefox
+    when iphone?      then :iphone
+    when ipad?        then :ipad
+    when ipod?        then :ipod
     when android?     then :android
     when blackberry?  then :blackberry
     when safari?      then :safari
@@ -335,6 +335,11 @@ class Browser
     !!(ua =~ /Windows/)
   end
 
+  # Detect if current platform is Windows Mobile.
+  def windows_mobile?
+    mobile? && windows?
+  end
+
   # Detect if current platform is Linux flavor.
   def linux?
     !!(ua =~ /Linux/)
@@ -353,9 +358,13 @@ class Browser
   # Return the platform.
   def platform
     case
-    when linux?   then :linux
-    when mac?     then :mac
-    when windows? then :windows
+    when android?        then :android
+    when ios?            then :ios
+    when kindle?         then :kindle
+    when windows_mobile? then :windows_mobile
+    when linux?          then :linux
+    when mac?            then :mac
+    when windows?        then :windows
     else
       :other
     end

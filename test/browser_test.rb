@@ -336,7 +336,7 @@ class BrowserTest < Test::Unit::TestCase
 
   def test_return_string_representation_for_ios
     @browser.ua = IPHONE
-    assert_equal "iphone webkit ios safari safari3 mac capable mobile", @browser.to_s
+    assert_equal "iphone webkit ios safari safari3 capable mobile", @browser.to_s
   end
 
   def test_return_string_representation_for_mobile
